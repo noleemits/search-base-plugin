@@ -1,26 +1,88 @@
 /* Custom styles for the search form */
 #lawyer-search-form {
     margin: 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap; /* Allow the form to wrap */
+}
+
+#lawyer-search-form .form-group {
+    position: relative;
+    flex: 1;
+    min-width: 250px; /* Ensure a minimum width */
+    margin-bottom: 15px; /* Add space at the bottom */
 }
 
 #lawyer-search-form label {
-    display: block;
-    margin-bottom: 5px;
+    display: none;
 }
 
 #lawyer-search-form select {
     width: 100%;
-    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    appearance: none;
+}
+
+#lawyer-search-form select:disabled {
+    background-color: #e9ecef;
 }
 
 #lawyer-search-form input[type="submit"] {
-    background-color: #0073aa;
+    background-color: #ff7a59;
     color: #fff;
     border: none;
     padding: 10px 15px;
     cursor: pointer;
+    border-radius: 5px;
+    margin-left: auto; /* Push the button to the right */
 }
 
-#lawyer-search-form input[type="submit"]:hover {
-    background-color: #005a87;
+#lawyer-search-form input[type="submit"]:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Custom styles for the icons */
+.icon-category, .icon-metro {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #999;
+}
+
+/* Custom styles for Select2 */
+.select2-container {
+    width: 100% !important; /* Ensure Select2 dropdown is full width */
+}
+
+.select2-container--default .select2-selection--single {
+    height: 38px;
+    line-height: 38px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 0 10px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 36px;
+    right: 10px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 36px;
+}
+
+/* Additional styling for better visibility */
+#lawyer-search-form .form-group select {
+    padding-right: 40px; /* Ensure space for the icon */
+}
+
+#lawyer-search-form .form-group .select2-selection__arrow {
+    top: 50%;
+    transform: translateY(-50%);
 }

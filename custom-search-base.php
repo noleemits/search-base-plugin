@@ -16,6 +16,8 @@ include_once plugin_dir_path( __FILE__ ) . 'includes/rewrite-rules.php';
 include_once plugin_dir_path( __FILE__ ) . 'includes/query-handling.php';
 include_once plugin_dir_path( __FILE__ ) . 'includes/shortcodes.php';
 include_once plugin_dir_path( __FILE__ ) . 'includes/enqueue-scripts.php';
+include_once plugin_dir_path( __FILE__ ) . 'includes/ajax-handlers.php';
+
 
 // Activation hook to flush rewrite rules
 function csb_activate_plugin() {
