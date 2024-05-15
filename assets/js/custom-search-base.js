@@ -1,7 +1,12 @@
 jQuery(document).ready(function($) {
     // Initialize Select2 on the dropdowns
-    $('#lawyer-category, #metro').select2({
-        placeholder: "Select an option",
+    $('#lawyer-category').select2({
+        placeholder: "Search category",
+        allowClear: true
+    });
+
+    $('#metro').select2({
+        placeholder: "Search metro",
         allowClear: true
     });
 
@@ -23,15 +28,22 @@ jQuery(document).ready(function($) {
                 },
                 success: function(response) {
                     if (response.success) {
+                        $('#metro').empty().append('<option value="" disabled selected>Search metro</option>'); // Clear previous options
                         response.data.forEach(function(metro) {
-                            $('#metro').append('<option value="' + metro.slug + '">' + metro.name + '</option>');
+                            console.log('Metro:', metro); // Debugging line to check received metro terms
+                            $('#metro').append('<option value="' + metro.slug + '" data-parent="' + metro.parent + '">' + metro.name + '</option>');
                         });
+                    } else {
+                        console.error(response.data);
                     }
                     // Refresh Select2
                     $('#metro').select2({
                         placeholder: "Search metro",
                         allowClear: true
                     });
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
                 }
             });
         } else {
