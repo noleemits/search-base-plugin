@@ -6,14 +6,14 @@ if (!defined('ABSPATH')) {
 
 function csb_add_rewrite_rules() {
     add_rewrite_rule(
-        '^resultados/([^/]+)/([^/]+)/([^/]+)/?$',
-        'index.php?pagename=lawyer-search-results&_sft_metro_parent=$matches[1]&_sft_metro=$matches[2]&_sft_lawyer-category=$matches[3]',
+        '^abogados/([^/]+)/([^/]+)/([^/]+)/?$',
+        'index.php?pagename=lawyer-search-results&_sft_lawyer-category=$matches[1]&_sft_metro_parent=$matches[2]&_sft_metro=$matches[3]',
         'top'
     );
 
     add_rewrite_rule(
-        '^resultados/([^/]+)/([^/]+)/?$',
-        'index.php?pagename=lawyer-search-results&_sft_metro=$matches[1]&_sft_lawyer-category=$matches[2]',
+        '^abogados/([^/]+)/([^/]+)/?$',
+        'index.php?pagename=lawyer-search-results&_sft_lawyer-category=$matches[1]&_sft_metro=$matches[2]',
         'top'
     );
 
