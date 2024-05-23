@@ -1,4 +1,6 @@
-<?php if ($query->have_posts()) : ?>
+<?php
+
+if ($query->have_posts()) : ?>
     <div class="search-results">
         <?php while ($query->have_posts()) : $query->the_post(); ?>
             <div class="search-result-item">

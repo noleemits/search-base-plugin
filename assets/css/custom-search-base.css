@@ -1,11 +1,13 @@
 /* Custom styles for the search form */
 #lawyer-search-form {
-    width: 580px;
     margin: 20px 0;
     display: flex;
     align-items: center;
     gap: 10px;
     flex-wrap: wrap; 
+}
+#lawyer-search-form button  span{
+display: none;
 }
 
 .select2-selection{
@@ -35,11 +37,11 @@
 }
 
 #lawyer-search-form select:disabled {
-    background-color: #e9ecef;
+    background-color: #dba93250;
 }
 
 #lawyer-search-form input[type="submit"] {
-    background-color: #ff7a59;
+    background-color: #dba932;
     color: #fff;
     border: none;
     padding: 10px 15px;
@@ -48,8 +50,17 @@
     margin-left: auto; /* Push the button to the right */
 }
 
+@media only screen and (max-width: 767px){
+	.form-group{
+		width: 80%;
+	}
+	#lawyer-search-form input[type="submit"]{
+		margin-inline:  0 !important;
+	}
+}
+
 #lawyer-search-form input[type="submit"]:disabled {
-    background-color: #ccc;
+    background-color: #dba93250;
     cursor: not-allowed;
 }
 

@@ -1,20 +1,23 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
+
+if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
 function csb_add_rewrite_rules() {
     add_rewrite_rule(
-        '^([^/]+)/([^/]+)/([^/]+)/?$',
-        'index.php?post_type=cpt-lawyer-card&_sft_metro_parent=$matches[1]&_sft_metro=$matches[2]&_sft_lawyer-category=$matches[3]',
+        '^resultados/([^/]+)/([^/]+)/([^/]+)/?$',
+        'index.php?pagename=lawyer-search-results&_sft_metro_parent=$matches[1]&_sft_metro=$matches[2]&_sft_lawyer-category=$matches[3]',
         'top'
     );
 
     add_rewrite_rule(
-        '^([^/]+)/([^/]+)/?$',
-        'index.php?post_type=cpt-lawyer-card&_sft_metro=$matches[1]&_sft_lawyer-category=$matches[2]',
+        '^resultados/([^/]+)/([^/]+)/?$',
+        'index.php?pagename=lawyer-search-results&_sft_metro=$matches[1]&_sft_lawyer-category=$matches[2]',
         'top'
     );
+
+    flush_rewrite_rules();
 }
 add_action('init', 'csb_add_rewrite_rules');
 

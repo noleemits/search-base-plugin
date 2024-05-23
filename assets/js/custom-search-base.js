@@ -28,9 +28,7 @@ jQuery(document).ready(function($) {
                 },
                 success: function(response) {
                     if (response.success) {
-                        $('#metro').empty().append('<option value="" disabled selected>Search metro</option>'); // Clear previous options
                         response.data.forEach(function(metro) {
-                            console.log('Metro:', metro); // Debugging line to check received metro terms
                             $('#metro').append('<option value="' + metro.slug + '" data-parent="' + metro.parent + '">' + metro.name + '</option>');
                         });
                     } else {
@@ -83,10 +81,11 @@ jQuery(document).ready(function($) {
         let newUrl = "";
         if (category && metro) {
             if (metroParent) {
-                newUrl = `${window.location.origin}/${metroParent}/${metro}/${category}/`;
+                newUrl = `${window.location.origin}/resultados/${metroParent}/${metro}/${category}/`;
             } else {
-                newUrl = `${window.location.origin}/${metro}/${category}/`;
+                newUrl = `${window.location.origin}/resultados/${metro}/${category}/`;
             }
+            console.log('Redirecting to: ', newUrl); // Debugging statement
             window.location.href = newUrl; // Redirect to the new URL
         }
     });
