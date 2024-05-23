@@ -1,12 +1,12 @@
 jQuery(document).ready(function($) {
     // Initialize Select2 on the dropdowns
     $('#lawyer-category').select2({
-        placeholder: "Search category",
+        placeholder: "Buscar categoría",
         allowClear: true
     });
 
     $('#metro').select2({
-        placeholder: "Search metro",
+        placeholder: "Buscar metro",
         allowClear: true
     });
 
@@ -16,7 +16,7 @@ jQuery(document).ready(function($) {
 
         if (category) {
             // Enable metro select and fetch metro options based on selected category
-            $('#metro').prop('disabled', false).html('<option value="" disabled selected>Search metro</option>');
+            $('#metro').prop('disabled', false).html('<option value="" disabled selected>Buscar metro</option>');
 
             // Fetch metro terms dynamically via AJAX
             $.ajax({
@@ -36,7 +36,7 @@ jQuery(document).ready(function($) {
                     }
                     // Refresh Select2
                     $('#metro').select2({
-                        placeholder: "Search metro",
+                        placeholder: "Buscar metro",
                         allowClear: true
                     });
                 },
@@ -45,7 +45,7 @@ jQuery(document).ready(function($) {
                 }
             });
         } else {
-            $('#metro').prop('disabled', true).html('<option value="" disabled selected>Please select a category first</option>');
+            $('#metro').prop('disabled', true).html('<option value="" disabled selected>Seleccione una categoría primero</option>');
         }
 
         // Enable the submit button if both fields are selected
@@ -81,9 +81,9 @@ jQuery(document).ready(function($) {
         let newUrl = "";
         if (category && metro) {
             if (metroParent) {
-                newUrl = `${window.location.origin}/resultados/${metroParent}/${metro}/${category}/`;
+                newUrl = `${window.location.origin}/abogados/${category}/${metroParent}/${metro}/`;
             } else {
-                newUrl = `${window.location.origin}/resultados/${metro}/${category}/`;
+                newUrl = `${window.location.origin}/abogados/${category}/${metro}/`;
             }
             console.log('Redirecting to: ', newUrl); // Debugging statement
             window.location.href = newUrl; // Redirect to the new URL
