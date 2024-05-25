@@ -1,6 +1,6 @@
 === Custom Search Base ===
-Contributors: yourname
-Donate link: http://yourwebsite.com/donate
+Contributors: Stephen Lee Hernandez
+Donate link: https://noleemits.omline
 Tags: search, custom post types, taxonomies, pretty permalinks
 Requires at least: 5.0
 Tested up to: 6.0
