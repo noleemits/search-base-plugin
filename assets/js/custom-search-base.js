@@ -6,7 +6,7 @@ jQuery(document).ready(function($) {
     });
 
     $('#metro').select2({
-        placeholder: "Buscar metro",
+        placeholder: "Buscar ciudad",
         allowClear: true
     });
 
@@ -47,7 +47,7 @@ jQuery(document).ready(function($) {
                     }
                     // Refresh Select2
                     $('#metro').select2({
-                        placeholder: "Buscar metro",
+                        placeholder: "Buscar ciudad",
                         allowClear: true
                     });
                 },

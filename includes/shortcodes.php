@@ -24,8 +24,6 @@ function csb_lawyer_search_form_shortcode($atts) {
 add_shortcode('lawyer_search_form', 'csb_lawyer_search_form_shortcode');
 
 
-
-
 // Results shortcode
 function csb_lawyer_search_results_shortcode($atts) {
     $atts = shortcode_atts(array(
@@ -111,8 +109,8 @@ function csb_best_lawyer_title_shortcode() {
 
     // Generate the title
     if ($lawyer_category && $metro) {
-        $title_category = sprintf('Best %s', esc_html($lawyer_category->name));
-        $title_metro = sprintf('Lawyers in %s', esc_html($metro->name));
+        $title_category = sprintf('Mejores %s', esc_html($lawyer_category->name));
+        $title_metro = sprintf('Abogados en  %s', esc_html($metro->name));
         return '<h1 class="h1-archive">' . $title_category . '<br>' . $title_metro . '</h1>';
     }
 

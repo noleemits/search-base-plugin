@@ -18,7 +18,7 @@
     </div>
 
     <div class="form-group">
-        <label for="metro">Buscar Metro</label>
+        <label for="metro">Buscar Ciudad</label>
         <select name="metro" id="metro" class="select2" disabled>
             <option value="" disabled selected>Seleccione una categoría primero</option>
         </select>
