@@ -5,16 +5,25 @@ function csb_lawyer_search_form_shortcode($atts) {
     $atts = shortcode_atts(array(
         'post_type' => 'cpt-lawyer-card',
         'common_searches' => '', // Comma-separated slugs of common searches
+        'preselect_category' => false, // Whether to preselect the current category
     ), $atts, 'lawyer_search_form');
 
-    $results_url = '/resultados-results/';
+    $results_url = '/abogados/';
     $common_searches = array_map('trim', explode(',', $atts['common_searches']));
+    
+    $current_category_slug = '';
+    if ($atts['preselect_category']) {
+        $current_category = get_queried_object();
+        $current_category_slug = $current_category ? $current_category->slug : '';
+    }
 
     ob_start();
     include plugin_dir_path(__FILE__) . '../templates/form-template.php';
     return ob_get_clean();
 }
 add_shortcode('lawyer_search_form', 'csb_lawyer_search_form_shortcode');
+
+
 
 
 // Results shortcode
@@ -77,13 +86,13 @@ function csb_lawyer_search_results_shortcode($atts) {
             endwhile;
             echo '</div>';
         else :
-            echo '<p>No results found.</p>';
+            echo '<p>No hay resultados.</p>';
         endif;
         wp_reset_postdata();
 
         return ob_get_clean();
     } else {
-        return '<p>Please select a category and metro area to search.</p>';
+        return '<p>Por favor elija una categoría.</p>';
     }
 }
 add_shortcode('lawyer_search_results', 'csb_lawyer_search_results_shortcode');
@@ -111,5 +120,3 @@ function csb_best_lawyer_title_shortcode() {
 }
 
 add_shortcode('best_lawyer_title', 'csb_best_lawyer_title_shortcode');
-
-

@@ -10,6 +10,17 @@ jQuery(document).ready(function($) {
         allowClear: true
     });
 
+    // Function to enable/disable the submit button for the main form
+    function toggleSubmitButton(categorySelector, metroSelector, submitButtonSelector) {
+        const category = $(categorySelector).val();
+        const metro = $(metroSelector).val();
+        if (category && metro) {
+            $(submitButtonSelector).prop('disabled', false);
+        } else {
+            $(submitButtonSelector).prop('disabled', true);
+        }
+    }
+
     // Handle category selection
     $('#lawyer-category').on('change', function() {
         const category = $(this).val();
@@ -49,27 +60,15 @@ jQuery(document).ready(function($) {
         }
 
         // Enable the submit button if both fields are selected
-        toggleSubmitButton();
+        toggleSubmitButton('#lawyer-category', '#metro', '#lawyer-search-form input[type="submit"]');
     });
 
     // Handle metro selection
     $('#metro').on('change', function() {
-        toggleSubmitButton();
+        toggleSubmitButton('#lawyer-category', '#metro', '#lawyer-search-form input[type="submit"]');
     });
 
-    // Function to enable/disable the submit button
-    function toggleSubmitButton() {
-        const category = $('#lawyer-category').val();
-        const metro = $('#metro').val();
-
-        if (category && metro) {
-            $('input[type="submit"]').prop('disabled', false);
-        } else {
-            $('input[type="submit"]').prop('disabled', true);
-        }
-    }
-
-    // Handle form submission
+    // Handle form submission for the main search form
     $('#lawyer-search-form').on('submit', function(event) {
         event.preventDefault(); // Prevent the default form submission
 
@@ -77,16 +76,29 @@ jQuery(document).ready(function($) {
         const metroSelect = $('#metro');
         const metro = metroSelect.val();
         const metroParent = metroSelect.find('option:selected').data('parent');
+        const resultsUrl = $('#results-url').val();
+
+        console.log('Category: ', category);
+        console.log('Metro: ', metro);
+        console.log('Metro Parent: ', metroParent);
+        console.log('Results URL: ', resultsUrl);
 
         let newUrl = "";
         if (category && metro) {
             if (metroParent) {
-                newUrl = `${window.location.origin}/abogados/${category}/${metroParent}/${metro}/`;
+                newUrl = `${window.location.origin}${resultsUrl}${category}/${metroParent}/${metro}/`;
             } else {
-                newUrl = `${window.location.origin}/abogados/${category}/${metro}/`;
+                newUrl = `${window.location.origin}${resultsUrl}${category}/${metro}/`;
             }
             console.log('Redirecting to: ', newUrl); // Debugging statement
             window.location.href = newUrl; // Redirect to the new URL
+        } else {
+            console.log('Category or Metro not found');
         }
     });
+
+    // Trigger change event to enable metro select and populate options if a category is preselected
+    if ($('#lawyer-category').val()) {
+        $('#lawyer-category').trigger('change');
+    }
 });
