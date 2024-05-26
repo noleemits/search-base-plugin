@@ -23,7 +23,6 @@ function csb_lawyer_search_form_shortcode($atts) {
 }
 add_shortcode('lawyer_search_form', 'csb_lawyer_search_form_shortcode');
 
-
 // Results shortcode
 function csb_lawyer_search_results_shortcode($atts) {
     $atts = shortcode_atts(array(
