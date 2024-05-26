@@ -5,15 +5,16 @@ if (!defined('ABSPATH')) {
 }
 
 function csb_add_rewrite_rules() {
+    // Rewrite rules for search results
     add_rewrite_rule(
         '^abogados/([^/]+)/([^/]+)/([^/]+)/?$',
-        'index.php?pagename=lawyer-search-results&_sft_lawyer-category=$matches[1]&_sft_metro_parent=$matches[2]&_sft_metro=$matches[3]',
+        'index.php?pagename=' . CSB_RESULTS_PAGE . '&_sft_lawyer-category=$matches[1]&_sft_metro_parent=$matches[2]&_sft_metro=$matches[3]',
         'top'
     );
 
     add_rewrite_rule(
         '^abogados/([^/]+)/([^/]+)/?$',
-        'index.php?pagename=lawyer-search-results&_sft_lawyer-category=$matches[1]&_sft_metro=$matches[2]',
+        'index.php?pagename=' . CSB_RESULTS_PAGE . '&_sft_lawyer-category=$matches[1]&_sft_metro=$matches[2]',
         'top'
     );
 
