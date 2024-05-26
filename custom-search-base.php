@@ -17,6 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Include required files
+require_once plugin_dir_path(__FILE__) . 'includes/config.php';
 include_once plugin_dir_path( __FILE__ ) . 'includes/rewrite-rules.php';
 include_once plugin_dir_path( __FILE__ ) . 'includes/query-handling.php';
 include_once plugin_dir_path( __FILE__ ) . 'includes/shortcodes.php';
