@@ -15,5 +15,5 @@ if ($query->have_posts()) : ?>
     </div>
     <?php wp_reset_postdata(); ?>
 <?php else : ?>
-    <p>No results found.</p>
+    <p>No se encontraron resultados.</p>
 <?php endif; ?>
