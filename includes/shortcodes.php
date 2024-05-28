@@ -109,7 +109,7 @@ function csb_best_lawyer_title_shortcode() {
     // Generate the title
     if ($lawyer_category && $metro) {
         $title_category = sprintf('Mejores %s', esc_html($lawyer_category->name));
-        $title_metro = sprintf('Abogados en  %s', esc_html($metro->name));
+        $title_metro = sprintf('en  %s', esc_html($metro->name));
         return '<h1 class="h1-archive">' . $title_category . '<br>' . $title_metro . '</h1>';
     }
 
