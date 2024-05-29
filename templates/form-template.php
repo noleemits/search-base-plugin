@@ -1,7 +1,7 @@
 <!--Form with category and metro -->
 <form id="lawyer-search-form">
     <input type="hidden" id="results-url" value="<?php echo esc_url($results_url); ?>">
-    <div class="form-group">
+    <div class="form-group form-group-1">
         <label for="lawyer-category">Buscar Categoría</label>
         <select name="lawyer-category" id="lawyer-category" class="select2">
             <option value="" disabled <?php echo empty($current_category_slug) ? 'selected' : ''; ?>>Buscar categoría</option>
