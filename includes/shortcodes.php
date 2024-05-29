@@ -113,7 +113,40 @@ function csb_best_lawyer_title_shortcode() {
         return '<h1 class="h1-archive">' . $title_category . '<br>' . $title_metro . '</h1>';
     }
 
-    return '<h1>Best Lawyers</h1>';
+    return '<h1 class="h1-archive>Best Lawyers</h1>';
 }
 
 add_shortcode('best_lawyer_title', 'csb_best_lawyer_title_shortcode');
+
+
+// Shortcode to output "Encuentra los mejores [lawyer-category] en tu zona"
+function csb_best_lawyers_in_your_area_shortcode() {
+    // Initialize variables
+    $lawyer_category_name = '';
+
+    // Check if this is a lawyer category archive page
+    if (is_tax(CSB_TAXONOMY_LAWYER_CATEGORY)) {
+        $term = get_queried_object();
+        if ($term && isset($term->taxonomy) && $term->taxonomy === CSB_TAXONOMY_LAWYER_CATEGORY) {
+            $lawyer_category_name = $term->name;
+        }
+    }
+
+    // Check if this is a search results page with query variables
+    if (!$lawyer_category_name) {
+        $lawyer_category_slug = get_query_var('_sft_' . CSB_TAXONOMY_LAWYER_CATEGORY);
+        $lawyer_category = get_term_by('slug', $lawyer_category_slug, CSB_TAXONOMY_LAWYER_CATEGORY);
+        if ($lawyer_category) {
+            $lawyer_category_name = $lawyer_category->name;
+        }
+    }
+
+    // Generate the output
+    if ($lawyer_category_name) {
+        return sprintf('<h2 class="h2-archive>Encuentra los mejores %s en tu zona</h2>', esc_html($lawyer_category_name));
+    }
+
+    return '<h2 class="h2-archive>Encuentra los mejores abogados en tu zona</h2>';
+}
+
+add_shortcode('best_lawyers_in_your_area', 'csb_best_lawyers_in_your_area_shortcode');
