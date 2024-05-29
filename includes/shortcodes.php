@@ -143,10 +143,10 @@ function csb_best_lawyers_in_your_area_shortcode() {
 
     // Generate the output
     if ($lawyer_category_name) {
-        return sprintf('<h2 class="h2-archive>Encuentra los mejores %s en tu zona</h2>', esc_html($lawyer_category_name));
+        return sprintf('<h2 class="h2-archive">Encuentra los mejores %s en tu zona</h2>', esc_html($lawyer_category_name));
     }
 
-    return '<h2 class="h2-archive>Encuentra los mejores abogados en tu zona</h2>';
+    return '<h2 class="h2-archive">Encuentra los mejores abogados en tu zona</h2>';
 }
 
 add_shortcode('best_lawyers_in_your_area', 'csb_best_lawyers_in_your_area_shortcode');
